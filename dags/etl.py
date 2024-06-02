@@ -46,6 +46,10 @@ def cambiar_lugar_columnas(df, col1, col2):
 # start_offset = en que fila va a empezar
 # Luego va a leer en bloques de 5 y se saltara 10 porque son 3 funciones
 # entrega el dataframe saltandose indices
+# usa por dentro la misma funcion original de transformacion, 
+# pero trabaja por bloques, leyendo 5 y saltandose 10, pero 
+# mediante el start_offset se le indica en que id del df debe empezar 
+# de esa manera no se solapa
 def funcion_paralela(df,start_offset):
     ns = {'ns': 'http://www.sii.cl/SiiDte'}
     filas_sin = []

@@ -55,7 +55,7 @@ def DataFrame2DataBaseStatic(dataframe, table_name, schema):
     port = database_config['port']
     
     # CREA LA CADENA DE CONEXIÓN
-    engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{database}')
+    engine = create_engine(f'postgresql://{user}:{password}@{host}/{database}')
     
     # ALMACENA DF EN DB
     dataframe.to_sql(table_name, engine, if_exists='append', index=False, schema=schema)

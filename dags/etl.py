@@ -4,7 +4,6 @@ from query_sql import query_POSTGRESQL, DataFrame2DataBaseStatic
 import os, sys
 import xml.etree.ElementTree as ET
 
-
 # Devuelve el dataframe
 def extract_data():
     # Consulta SQL
@@ -42,7 +41,6 @@ def cambiar_lugar_columnas(df, col1, col2):
     else:
         print(f"Una o ambas columnas '{col1}' y '{col2}' no existen en el DataFrame.")
     return df
-
 
 # Param
 # start_offset = en que fila va a empezar
@@ -107,8 +105,7 @@ def task_etl(start_offset):
     # extraccion
     df = extract_data()
     # transformacion
-    funcion_paralela(df,start_offset).info()
+    df_new = funcion_paralela(df,start_offset)
     # carga
-    # esto es para subirlo a la base de datos al schema airflow
-    # table_name = 'mendoza_bustos_fonseca_ramos'
-    # DataFrame2DataBaseStatic(df_new_sorted, table_name, 'airflow')
+    table_name = 'mendoza_bustos_fonseca_ramos'
+    DataFrame2DataBaseStatic(dataframe=df_new, table_name=table_name, schema='airflow')
